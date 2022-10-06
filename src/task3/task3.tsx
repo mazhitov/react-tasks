@@ -28,7 +28,7 @@ export interface Book {
 
 export const BooksList: FC<{ books: Book[] }> = ({ books }) => {
   const renderList = useMemo(() => {
-    return books.map((book, i) => <li key={i}>{book.name}</li>)
+    return books.map((book) => <li key={book.id}>{book.name}</li>)
   }, [books])
 
   return (

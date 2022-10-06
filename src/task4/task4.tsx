@@ -1,4 +1,4 @@
-import React, { createContext, FC, useContext, useState } from 'react';
+import React, { createContext, FC, useCallback, useContext, useState } from 'react';
 
 
 /*
@@ -80,6 +80,10 @@ const LayerB: FC = () => {
 
 const Child: FC = () => {
   const context = useContext(userContext);
+  const handleClick = useCallback(() => {
+    setCount(prev => prev + 1);
+  }, []);
+
   if(!context) {
     return <></>;
   }
@@ -87,7 +91,7 @@ const Child: FC = () => {
   return(
     <>
       <p>{count}</p>
-      <button onClick={() => setCount(count + 1)}>Inc</button>
+      <button onClick={handleClick}>Inc</button>
     </>
   );
 }
